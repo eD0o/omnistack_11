@@ -1,8 +1,15 @@
 const express = require("express");
+const cors = require('cors');
+const routes = require('./routes');
 
 const app = express();
 
-app.use(express.json);
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+
+
+//npm instala e gerencia pacotes, npx executa pacotes
 
 // Rota/Recurso - o que vem na URL, por exemplo, /users
 
@@ -23,15 +30,16 @@ app.use(express.json);
 
 //Request Body: Corpo da requisição, utilizado para criar ou alterar recursos
 
-app.post("/users", (request, response) => {
-  const body = request.body;
+/**
+ * SQL - Relacionais
+ * NoSQL - Não relacionais
+ */
 
-  console.log(body);
+/**
+ * Driver: Select * FROM users
+ * Query Builder:table('users').select('*').where() -> exemplos em .js
+ */
 
-  return response.json({
-    evento: "Semana Omnistack 11",
-    aluno: "Eduardo Vinícius"
-  });
-});
+
 
 app.listen(3333);
